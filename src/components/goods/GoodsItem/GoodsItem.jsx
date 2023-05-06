@@ -30,9 +30,9 @@ const GoodsItem = ({ picture, price, name, id, color, category }) => {
           <span>{price}$</span>
 
           <div className={styles.inner}>
-            {count ? <span className={styles.count}>{count}</span> : ""}
             <span className={styles.btn} onClick={onClickAdd}>
               Add to cart
+              {count ? <span className={styles.count}>{count}</span> : ""}
             </span>
           </div>
         </div>
