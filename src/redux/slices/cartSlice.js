@@ -30,7 +30,7 @@ const cartSlice = createSlice({
       const updatedItems = state.items
         .filter((obj) => obj.id !== action.payload)
         .map((obj) => {
-          const { totalPrice, ...rest } = obj; // using destructuring to remove totalPrice property
+          const { totalPrice, ...rest } = obj;
           return rest;
         });
       return { ...state, items: updatedItems };
