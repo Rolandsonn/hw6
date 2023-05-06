@@ -1,0 +1,25 @@
+.wrapper {
+  padding: 10px 0;
+  margin-bottom: 30px;
+  background-color: rgb(68, 163, 246);
+}
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.img {
+  width: 20px;
+  fill: aqua;
+}
+.link {
+  color: #fff;
+}
+.link__count {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 30px;
+}
