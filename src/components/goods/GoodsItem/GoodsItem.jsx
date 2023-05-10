@@ -15,7 +15,7 @@ const GoodsItem = ({ image, price, name, id, category }) => {
   };
 
   const cartItem = useSelector((state) =>
-    state.cart.items.find((obj) => obj.id === id)
+    state.cart.cart.find((obj) => obj.id === id)
   );
 
   const count = cartItem ? cartItem.count : 0;
@@ -31,7 +31,6 @@ const GoodsItem = ({ image, price, name, id, category }) => {
           <div className={styles.inner}>
             <span className={styles.btn} onClick={onClickAdd}>
               Add to cart
-              {count}
               {count ? <span className={styles.count}>{count}</span> : ""}
             </span>
           </div>
