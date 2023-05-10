@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const CartPage = () => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.cart.items);
+  const items = useSelector((state) => state.cart.cart);
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to clear the cart???")) {
       dispatch(clearItems());

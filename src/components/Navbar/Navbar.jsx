@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
-import cart from "../../assets/img/cart.png";
+import cartImg from "../../assets/img/cart.png";
 import { useSelector } from "react-redux";
 const Navbar = () => {
-  const { totalPrice, items } = useSelector((state) => state.cart);
-  const totalCount = items.reduce((total, item) => total + item.count, 0);
-  console.log(totalCount);
+  const { totalPrice, cart } = useSelector((state) => state.cart);
+  const totalCount = cart.reduce((total, item) => total + item.count, 0);
 
   return (
     <>
@@ -19,8 +18,8 @@ const Navbar = () => {
             </li>
             <li className={styles.item}>
               <Link to={"/cart"} className={styles.link__count}>
-                <span>{totalPrice}$</span>
-                <img className={styles.img} src={cart} alt="cart" />
+                <span>{totalPrice.toFixed(0)}$</span>
+                <img className={styles.img} src={cartImg} alt="cart" />
                 <span>{totalCount ? totalCount : ""}</span>
               </Link>
             </li>

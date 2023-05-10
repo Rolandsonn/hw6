@@ -1,6 +1,8 @@
 import styles from "./Goods.module.css";
 import GoodsItem from "../GoodsItem";
-const Goods = ({ items }) => {
+import { useSelector } from "react-redux";
+const Goods = () => {
+  const items = useSelector((state) => state.cart.items);
   const itemsElem = items.map((item) => <GoodsItem key={item.id} {...item} />);
   return (
     <>

@@ -1,15 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./GoodsItem.module.css";
 import { addItem } from "../../../redux/slices/cartSlice";
-const GoodsItem = ({ picture, price, name, id, color, category }) => {
+const GoodsItem = ({ image, price, name, id, category }) => {
   const dispatch = useDispatch();
   const onClickAdd = () => {
     const item = {
       id,
-      picture,
+      image,
       name,
       price,
-      color,
       category,
     };
     dispatch(addItem(item));
@@ -24,14 +23,15 @@ const GoodsItem = ({ picture, price, name, id, color, category }) => {
   return (
     <>
       <li className={styles.item}>
-        <img className={styles.img} src={picture} alt={name} />
+        <img className={styles.img} src={image} alt={name} />
         <p>{name}</p>
         <div className={styles.wrapper}>
-          <span>{price}$</span>
+          <span>{Math.round(price)}$</span>
 
           <div className={styles.inner}>
             <span className={styles.btn} onClick={onClickAdd}>
               Add to cart
+              {count}
               {count ? <span className={styles.count}>{count}</span> : ""}
             </span>
           </div>

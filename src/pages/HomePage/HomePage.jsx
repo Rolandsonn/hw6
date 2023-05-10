@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import Goods from "../../components/goods";
-import items from "../../goods.json";
+import { useDispatch } from "react-redux";
+import { fetchGoods } from "../../redux/slices/cartSlice";
 const HomePage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchGoods());
+  }, [dispatch]);
+
   return (
     <div className="container">
-      <Goods items={items} />
+      <Goods />
     </div>
   );
 };

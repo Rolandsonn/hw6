@@ -1,8 +1,12 @@
 import { useDispatch } from "react-redux";
 import styles from "./CartItem.module.css";
-import { deleteItems } from "../../../redux/slices/cartSlice";
+import {
+  deleteItems,
+  addItem,
+  minusItem,
+} from "../../../redux/slices/cartSlice";
 
-export default function CartItem({ id, picture, name, price, count }) {
+export default function CartItem({ id, image, name, price, count }) {
   const dispatch = useDispatch();
 
   const onClickDelete = () => {
@@ -12,17 +16,29 @@ export default function CartItem({ id, picture, name, price, count }) {
     }
   };
 
+  const onClickPlus = () => {
+    dispatch(addItem({ id }));
+  };
+
+  const onClickMinus = () => {
+    dispatch(minusItem({ id }));
+  };
+
   return (
     <li className={styles.item}>
       <div className={styles.wrapper}>
         <div className={styles.inner}>
-          <img className={styles.img} src={picture} alt={name} />
+          <img className={styles.img} src={image} alt={name} />
           <p className={styles.text}>{name}</p>
         </div>
 
-        <p className={styles.text}>{price}$</p>
+        <p className={styles.text}>{Math.round(price)}$</p>
 
-        <span>{count}шт.</span>
+        <span>
+          <i onClick={onClickMinus}>-</i>
+          {count}шт.
+          <i onClick={onClickPlus}>+</i>
+        </span>
 
         <button className={styles.delete__btn} onClick={onClickDelete}>
           delete
