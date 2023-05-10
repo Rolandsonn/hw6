@@ -34,10 +34,14 @@ export default function CartItem({ id, image, name, price, count }) {
 
         <p className={styles.text}>{Math.round(price)}$</p>
 
-        <span>
-          <i onClick={onClickMinus}>-</i>
+        <span className={styles.btns}>
+          <i className={styles.btn} onClick={onClickMinus}>
+            -
+          </i>
           {count}шт.
-          <i onClick={onClickPlus}>+</i>
+          <i className={styles.btn} onClick={onClickPlus}>
+            +
+          </i>
         </span>
 
         <button className={styles.delete__btn} onClick={onClickDelete}>

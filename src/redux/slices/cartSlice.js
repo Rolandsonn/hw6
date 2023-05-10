@@ -48,13 +48,14 @@ const cartSlice = createSlice({
     minusItem(state, action) {
       const findItem = state.cart.find((obj) => obj.id === action.payload.id);
 
-      if (findItem) {
+      if (findItem && findItem.count > 0) {
         findItem.count -= 1;
       }
-      state.totalPrice = state.cart.reduce((acc, obj) => {
-        console.log(obj.price);
-        return +obj.price * obj.count - acc;
-      }, 0);
+      if (state.totalPrice >= 0) {
+        state.totalPrice = state.cart.reduce((acc, obj) => {
+          return +obj.price * obj.count - acc;
+        }, 0);
+      }
     },
   },
   extraReducers: (builder) => {
